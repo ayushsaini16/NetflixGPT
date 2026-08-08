@@ -10,6 +10,7 @@ import {
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
+import { BACKGROUND_IMAGE } from "../utils/constants";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -107,6 +108,10 @@ const Login = () => {
             console.log(user);
 
             const { uid, displayName, email } = user;
+            localStorage.setItem(
+              "user",
+              JSON.stringify({ uid, displayName, email }),
+            );
             dispatch(addUser({ uid: uid, name: displayName, email: email }));
             navigate("/browse");
           })
@@ -127,7 +132,7 @@ const Login = () => {
       {/* Background Image - hidden on mobile for better visibility, standard on desktop */}
       <div className="absolute inset-0 z-0 hidden md:block">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/0ce6c17e-e188-4f13-aaf2-6366e12ba739/web/IN-en-20260803-TRIFECTA-perspective_7730cca2-6324-4104-bf66-1a1f6e1a3e61_large.jpg"
+          src={BACKGROUND_IMAGE}
           alt="background"
           className="w-full h-full object-cover"
         />

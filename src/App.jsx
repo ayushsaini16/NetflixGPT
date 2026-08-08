@@ -7,18 +7,28 @@ import Header from "./components/Header";
 import Layout from "./components/Layout";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import RequiredAuth from "./components/RequiredAuth";
+import AuthRedirect from "./components/AuthRedirect";
 const approuter = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
       {
-        index: true,
-        element: <Login />,
+        index: "/",
+        element: (
+          <AuthRedirect>
+            <Login />
+          </AuthRedirect>
+        ),
       },
       {
         path: "/browse",
-        element: <Browse />,
+        element: (
+          <RequiredAuth>
+            <Browse />
+          </RequiredAuth>
+        ),
       },
     ],
   },
