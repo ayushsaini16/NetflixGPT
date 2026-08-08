@@ -5,7 +5,8 @@ import Login from "./components/Login";
 import Browse from "./components/Browse";
 import Header from "./components/Header";
 import Layout from "./components/Layout";
-
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 const approuter = createBrowserRouter([
   {
     path: "/",
@@ -26,7 +27,9 @@ const approuter = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={approuter} />
+      <Provider store={appStore}>
+        <RouterProvider router={approuter} />
+      </Provider>
     </>
   );
 }
