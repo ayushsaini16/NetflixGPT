@@ -23,7 +23,6 @@ const Header = () => {
       });
   };
   return (
-    // Fixed width constraint, centered container, and smart padding adjustments per screen size
     <div className="absolute top-0 left-0 right-0 px-4 py-4 md:px-12 md:py-6 bg-gradient-to-b from-black/80 to-transparent z-50 flex justify-between items-center w-full mx-auto">
       <img
         className="w-28 sm:w-36 md:w-44 object-contain"
