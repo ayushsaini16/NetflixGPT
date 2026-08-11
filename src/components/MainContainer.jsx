@@ -14,9 +14,11 @@ const MainContainer = () => {
 
   return (
     <>
-      <VideoBackground movieId={id} />
+      <div className="relative w-full min-h-screen overflow-hidden">
+        <VideoBackground movieId={id} />
 
-      <VideoTitle title={original_title} overview={overview} />
+        <VideoTitle title={original_title} overview={overview} />
+      </div>
     </>
   );
 };
