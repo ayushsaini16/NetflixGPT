@@ -80,7 +80,6 @@ const Login = () => {
           .then((userCredential) => {
             // Signed up
             const user = userCredential.user;
-            console.log(user);
             updateProfile(user, {
               displayName: formInput.name,
             })
@@ -97,7 +96,7 @@ const Login = () => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode + " " + errorMessage);
+
             setErrors((prev) => ({ ...prev, message: "User not created" }));
           });
       } else {
@@ -105,7 +104,6 @@ const Login = () => {
           .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log(user);
 
             const { uid, displayName, email } = user;
             localStorage.setItem(
@@ -118,7 +116,7 @@ const Login = () => {
           .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode + "" + errorMessage);
+
             setErrors((prev) => ({ ...prev, message: "User not exist" }));
           });
       }

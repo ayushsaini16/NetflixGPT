@@ -5,17 +5,24 @@ import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import usePopularMovies from "../customHooks/usePopularMovies";
 import useTopRatedMovies from "../customHooks/useTopRatedMovies";
+import { useSelector } from "react-redux";
+import GptSearch from "./GptSearch";
 const Browse = () => {
+  const toggleSearch = useSelector((store) => store.gpt);
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
   return (
     <>
       <Header />
-      <div className="bg-zinc-300 min-h-screen">
-        <MainContainer />
-        <SecondaryContainer />
-      </div>
+      {toggleSearch.showGptSearch ? (
+        <GptSearch />
+      ) : (
+        <div className="bg-zinc-300 min-h-screen">
+          <MainContainer />
+          <SecondaryContainer />
+        </div>
+      )}
     </>
   );
 };

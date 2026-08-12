@@ -5,11 +5,13 @@ import { removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { LOGO } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSearchSlice";
 const Header = () => {
   const user = useSelector((store) => store.user); //Not user the user of redux as it makes problem in routing
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userexist = JSON.parse(localStorage.getItem("user")); //Instead use localStorage for it
+  const toggleSearch = useSelector((store) => store.gpt.showGptSearch);
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -19,7 +21,6 @@ const Header = () => {
       })
       .catch((error) => {
         // An error happened.
-        console.log(error);
       });
   };
   return (
@@ -30,8 +31,17 @@ const Header = () => {
         alt="Netflix logo"
       />
       {userexist && (
-        <div>
-          <button className="cursor-pointer" onClick={handleSignOut}>
+        <div className="flex gap-5">
+          <button
+            className="cursor-pointer bg-purple-900 px-2 py-2 rounded-xl text-white"
+            onClick={() => dispatch(toggleGptSearchView())}
+          >
+            {toggleSearch ? "Homepage" : "GPT Search"}
+          </button>
+          <button
+            className="cursor-pointer bg-red-800 px-2 py-2 rounded-xl "
+            onClick={handleSignOut}
+          >
             Sign Out
           </button>
         </div>
