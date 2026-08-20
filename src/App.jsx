@@ -9,6 +9,8 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import RequiredAuth from "./components/RequiredAuth";
 import AuthRedirect from "./components/AuthRedirect";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor } from "./utils/appStore";
 const approuter = createBrowserRouter([
   {
     path: "/",
@@ -38,7 +40,9 @@ function App() {
   return (
     <>
       <Provider store={appStore}>
-        <RouterProvider router={approuter} />
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={approuter} />
+        </PersistGate>
       </Provider>
     </>
   );

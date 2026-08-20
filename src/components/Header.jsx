@@ -7,16 +7,18 @@ import { signOut } from "firebase/auth";
 import { LOGO } from "../utils/constants";
 import { toggleGptSearchView } from "../utils/gptSearchSlice";
 const Header = () => {
-  const user = useSelector((store) => store.user); //Not user the user of redux as it makes problem in routing
+  const userexist = useSelector((store) => store?.user?.name); //Not user the user of redux as it makes problem in routing
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userexist = JSON.parse(localStorage.getItem("user")); //Instead use localStorage for it
+  // const userexist = JSON.parse(localStorage.getItem("user")); //Instead use localStorage for it
   const toggleSearch = useSelector((store) => store.gpt.showGptSearch);
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
-        localStorage.removeItem("user");
+        // localStorage.removeItem("user");
+        console.log("Signout Scuuessfully");
         dispatch(removeUser());
+        console.log("removeUser dispatched");
         navigate("/");
       })
       .catch((error) => {

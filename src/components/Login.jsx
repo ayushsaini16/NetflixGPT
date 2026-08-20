@@ -106,10 +106,10 @@ const Login = () => {
             const user = userCredential.user;
 
             const { uid, displayName, email } = user;
-            localStorage.setItem(
-              "user",
-              JSON.stringify({ uid, displayName, email }),
-            );
+            // localStorage.setItem(
+            //   "user",
+            //   JSON.stringify({ uid, displayName, email }),
+            // );
             dispatch(addUser({ uid: uid, name: displayName, email: email }));
             navigate("/browse");
           })
