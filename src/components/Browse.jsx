@@ -8,14 +8,14 @@ import useTopRatedMovies from "../customHooks/useTopRatedMovies";
 import { useSelector } from "react-redux";
 import GptSearch from "./GptSearch";
 const Browse = () => {
-  const toggleSearch = useSelector((store) => store.gpt);
+  const toggleSearch = useSelector((store) => store.gemini);
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
   return (
     <>
       <Header />
-      {toggleSearch.showGptSearch ? (
+      {toggleSearch.showGeminiSearch ? (
         <GptSearch />
       ) : (
         <div className="bg-zinc-300 min-h-screen">

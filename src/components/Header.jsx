@@ -5,26 +5,37 @@ import { removeUser } from "../utils/userSlice";
 import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { LOGO } from "../utils/constants";
-import { toggleGptSearchView } from "../utils/gptSearchSlice";
+import {
+  removeMovieData,
+  removeSearchResult,
+  toggleGeminiSearchView,
+} from "../utils/geminiSearchSlice";
 const Header = () => {
   const userexist = useSelector((store) => store?.user?.name); //Not user the user of redux as it makes problem in routing
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // const userexist = JSON.parse(localStorage.getItem("user")); //Instead use localStorage for it
-  const toggleSearch = useSelector((store) => store.gpt.showGptSearch);
+  const toggleSearch = useSelector((store) => store.gemini.showGeminiSearch);
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // localStorage.removeItem("user");
-        console.log("Signout Scuuessfully");
+
         dispatch(removeUser());
-        console.log("removeUser dispatched");
+
         navigate("/");
       })
       .catch((error) => {
         // An error happened.
       });
   };
+
+  const handleHomePage = () => {
+    dispatch(toggleGeminiSearchView());
+    dispatch(removeSearchResult());
+    dispatch(removeMovieData());
+  };
+
   return (
     <div className="absolute top-0 left-0 right-0 px-4 py-4 md:px-12 md:py-6 bg-gradient-to-b from-black/80 to-transparent z-50 flex justify-between items-center w-full mx-auto">
       <img
@@ -36,7 +47,7 @@ const Header = () => {
         <div className="flex gap-5">
           <button
             className="cursor-pointer bg-purple-900 px-2 py-2 rounded-xl text-white"
-            onClick={() => dispatch(toggleGptSearchView())}
+            onClick={handleHomePage}
           >
             {toggleSearch ? "Homepage" : "GPT Search"}
           </button>

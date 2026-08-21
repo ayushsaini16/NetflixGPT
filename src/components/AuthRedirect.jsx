@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 const AuthRedirect = ({ children }) => {
   const userexist = useSelector((store) => store?.user?.name);
-  console.log(userexist);
+
 
   if (userexist) {
     return <Navigate to="/browse" />;

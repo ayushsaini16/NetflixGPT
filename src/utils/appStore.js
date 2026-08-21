@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import movieReducer from "./movieSlice";
-import gptReducer from "./gptSearchSlice";
+import geminiReducer from "./geminiSearchSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storageModule from "redux-persist/lib/storage";
 
@@ -15,7 +15,7 @@ const appStore = configureStore({
   reducer: {
     user: persistedUserReducer,
     movies: movieReducer,
-    gpt: gptReducer,
+    gemini: geminiReducer,
   },
 });
 export const persistor = persistStore(appStore);
