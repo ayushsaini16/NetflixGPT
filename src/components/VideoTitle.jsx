@@ -1,6 +1,6 @@
 import React from "react";
 import playIcon from "../assets/playIcon.jpg";
-import InfoIcon from "../assets/InfoIcon.png";
+import InfoIcon from "../assets/infoIcon.png";
 const VideoTitle = ({ title, overview }) => {
   return (
     <>
