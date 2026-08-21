@@ -31,7 +31,7 @@ const GptSearchBar = () => {
 
   return (
     <>
-      <div className="absolute inset-0 -z-10 hidden md:block">
+      <div className="inset-0 -z-10 fixed md:block">
         <img
           src={BACKGROUND_IMAGE}
           alt="background"

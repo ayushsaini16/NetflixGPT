@@ -7,14 +7,8 @@ const VideoTitle = ({ title, overview }) => {
       <div
         className=" absolute
         z-20
-        left-4
-        sm:left-8
-        md:left-12
-        lg:left-16
-        bottom-12
-        sm:bottom-16
-        md:bottom-20
-        lg:bottom-24
+        left-8
+        bottom-50
         w-[90%]
         sm:w-[75%]
         md:w-[65%]

@@ -37,7 +37,7 @@ const SearchResultList = () => {
 
   return (
     <>
-      <div className="relative z-20 bg-black mt-20">
+      <div className="relative z-20 mt-20 bg-black/50">
         {movieData?.map((movie) => {
           return (
             <span key={movie?.[0].id}>
